@@ -26,7 +26,7 @@ import java.io.InputStream;
 import androidx.core.app.ActivityCompat;
 import co.desofsi.taxiapp.*;
 
-public class NewContactActivity extends AppCompatActivity {
+public class AcelerometerActivity extends AppCompatActivity {
 
     private EditText nombre, tele, movil, email;
     private ImageView imagen;
@@ -38,7 +38,7 @@ public class NewContactActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_contact);
+        setContentView(R.layout.activity_acelerometer);
 
 
 
@@ -49,7 +49,7 @@ public class NewContactActivity extends AppCompatActivity {
         imagen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityCompat.requestPermissions(NewContactActivity.this,
+                ActivityCompat.requestPermissions(AcelerometerActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         REQUEST_CODE_GALLERY);
 
@@ -58,26 +58,7 @@ public class NewContactActivity extends AppCompatActivity {
         button_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nombre.getText().toString().equals("")||tele.getText().toString().equals("")||movil.getText().toString().equals("")||email.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Complete todos los campos!", Toast.LENGTH_SHORT).show();
-                } else {
 
-
-                    try {
-                        MainActivity.sqLiteHelper.insertDataContactos(
-                                nombre.getText().toString().trim(),
-                                tele.getText().toString().trim(),
-                                movil.getText().toString().trim(),
-                                email.getText().toString().trim(),
-                                imageViewToByte(imagen)
-
-                        );
-                        Toast.makeText(getApplicationContext(), "Agregado exitosamente!", Toast.LENGTH_SHORT).show();
-                       limpiar();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
             }
         });
 

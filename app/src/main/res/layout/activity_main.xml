@@ -50,7 +50,7 @@
             app:cardElevation="6dp">
 
             <LinearLayout
-                android:id="@+id/layout_ingresos"
+                android:id="@+id/layout_acelerometer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -71,7 +71,7 @@
                     android:layout_height="50dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="Contactos"
+                    android:text="Acelerometer"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -94,7 +94,7 @@
 
             <LinearLayout
                 android:background="@color/colorPrimary"
-                android:id="@+id/layout_gastos"
+                android:id="@+id/layout_proximity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -114,7 +114,7 @@
                     android:layout_height="50dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="Taxis"
+                    android:text="Proximity"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
 
             <LinearLayout
                 android:background="@color/colorPrimary"
-                android:id="@+id/layout_cat_ingresos"
+                android:id="@+id/layout_cat_temperature"
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:layout_height="match_parent"
@@ -159,7 +159,7 @@
                     android:layout_height="50dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="Nuevo contacto"
+                    android:text="Localización"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
@@ -180,7 +180,7 @@
 
             <LinearLayout
 
-                android:id="@+id/layout_cat_gasto"
+                android:id="@+id/layout_magnetic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -193,7 +193,7 @@
                     android:layout_gravity="center_horizontal"
                     android:padding="2dp"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/aniadir" />
+                    app:srcCompat="@drawable/ic_brightness_high_black_24dp" />
 
                 <TextView
                     android:textColor="@color/md_amber_300"
@@ -201,7 +201,7 @@
                     android:layout_height="50dp"
                     android:gravity="center"
                     android:padding="2dp"
-                    android:text="Añadir taxi"
+                    android:text="Magnetismo"
                     android:textSize="16dp"
                     android:textStyle="bold" />
 

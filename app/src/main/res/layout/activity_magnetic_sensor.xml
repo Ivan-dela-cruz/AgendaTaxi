@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_grey_900"
+    android:background="@color/md_text_white"
     tools:context=".activities.MagneticSensorActivity">
     <TextView
         android:id="@+id/textView"
@@ -13,7 +13,7 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="#ff2b00"
+        android:textColor="@color/md_text"
         android:textSize="25dp"
         android:text="Encuentra tu posisción"/>
 
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:text=" "
-        android:textColor="@color/md_red_500"
+        android:textColor="@color/md_grey_700"
         android:textSize="30dp" />
 
     <ImageView

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.desofsi.taxiapp">
 
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -13,13 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.MagneticSensorActivity"></activity>
-        <activity android:name=".activities.AcelerometerActivity" />
-        <activity android:name=".activities.ProximityActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.TaxiDriverActivity" />
+        <activity android:name=".presentation.PresentationProximity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".presentation.PresentationMagnetic" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".presentation.PresentationLight" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".presentation.PresentationAcelerometer" android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.MagneticSensorActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AcelerometerActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ProximityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LuminosidadActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.splashActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

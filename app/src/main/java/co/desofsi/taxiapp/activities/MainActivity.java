@@ -2,6 +2,10 @@ package co.desofsi.taxiapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import co.desofsi.taxiapp.R;
+import co.desofsi.taxiapp.presentation.PresentationAcelerometer;
+import co.desofsi.taxiapp.presentation.PresentationLight;
+import co.desofsi.taxiapp.presentation.PresentationMagnetic;
+import co.desofsi.taxiapp.presentation.PresentationProximity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AcelerometerActivity.class);
+                Intent intent = new Intent(MainActivity.this, PresentationLight.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManetic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MagneticSensorActivity.class);
+                Intent intent = new Intent(MainActivity.this, PresentationMagnetic.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutProximity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ProximityActivity.class);
+                Intent intent = new Intent(MainActivity.this, PresentationProximity.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutRegistroGastos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AcelerometerActivity.class);
+                Intent intent = new Intent(MainActivity.this, PresentationAcelerometer.class);
                 startActivity(intent);
             }
         });

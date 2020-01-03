@@ -1,82 +1,67 @@
 package co.desofsi.taxiapp.activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import androidx.core.app.ActivityCompat;
-import co.desofsi.taxiapp.*;
+import co.desofsi.taxiapp.R;
 
-public class AcelerometerActivity extends AppCompatActivity implements SensorEventListener {
-
-
-    final int REQUEST_CODE_GALLERY = 999;
+public class LuminosidadActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
 
     private Sensor sensor;
-    private TextView textView;
+
 
     LineChart chart;
 
     ArrayList<Entry> values1;
     boolean someCondition = true;
     int contador = 0;
-    RefreshTask temporizador;
+    RefreshTaskTemp temporizador;
+
+    private ImageView imagen;
+    private LineChart lineChart;
+    private TextView textView;
 
     private Button button;
-     private String valor_sensor = "Acelerometer:  0 ; ";
+
+    private String valor_sensor = "(x) = 0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_acelerometer);
+        setContentView(R.layout.activity_luminosidad);
 
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Acelerometer");
+        actionBar.setTitle("Light Sensor");
         init();
         temporizador.execute();
         //temporizador.cancel();
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,16 +74,14 @@ public class AcelerometerActivity extends AppCompatActivity implements SensorEve
         });
     }
 
-
     public void init() {
-        temporizador = new RefreshTask();
-        chart = (LineChart) findViewById(R.id.chart_line_ingreso);
+        temporizador = new RefreshTaskTemp();
+        chart = (LineChart) findViewById(R.id.chart_line_temp);
 
         values1 = new ArrayList<>();
-        textView = (TextView) findViewById(R.id.txt_valores);
-        button = (Button) findViewById(R.id.btn_stop_acelerometro);
+        button = (Button) findViewById(R.id.btn_stop_light);
+        textView = (TextView) findViewById(R.id.txt_temp);
     }
-
 
     public void initChart(int x, int y) {
 
@@ -106,7 +89,7 @@ public class AcelerometerActivity extends AppCompatActivity implements SensorEve
         values1.add(new Entry(x, y));
 
 
-        LineDataSet d1 = new LineDataSet(values1, "Ingresos  " + "describ" + " (Enero - Diciembre)");
+        LineDataSet d1 = new LineDataSet(values1, "Function  " + "status" + " (time - light)");
         d1.setLineWidth(2.5f);
         d1.setCircleRadius(4.5f);
         d1.setHighLightColor(Color.rgb(244, 117, 117));
@@ -117,22 +100,16 @@ public class AcelerometerActivity extends AppCompatActivity implements SensorEve
         chart.invalidate(); // refre
     }
 
-
     @Override
     public void onSensorChanged(SensorEvent event) {
         int valor = (int) event.values[0];
         int valor2 = contador;
 
-        valor_sensor = "Acelerometer:  "+valor+" ; ";
-
-        if (valor > 0) {
-            //textView.setText("valor 0 : "+valor+"  valor 1: "+valor2);
-            initChart(valor2, valor * 100);
-
-        } else {
+        valor_sensor = "(x) = " + valor;
+        // textView.setText("valor 0 : " + valor + "  valor 1: " + valor2);
+        initChart(valor2, valor * 100);
 
 
-        }
     }
 
     @Override
@@ -141,16 +118,15 @@ public class AcelerometerActivity extends AppCompatActivity implements SensorEve
     }
 
 
-    class RefreshTask extends AsyncTask {
+    class RefreshTaskTemp extends AsyncTask {
 
 
         @Override
         protected void onProgressUpdate(Object... values) {
 
             contador++;
-            String text = valor_sensor + "Timer: " +contador;
+            String text = valor_sensor+ "  (y) = "+contador;
             textView.setText(text);
-
 
         }
 
